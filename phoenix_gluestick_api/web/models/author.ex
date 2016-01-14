@@ -1,0 +1,25 @@
+defmodule PhoenixGluestickApi.Author do
+  use PhoenixGluestickApi.Web, :model
+
+  schema "authors" do
+    field :name, :string
+    field :age, :integer
+
+    has_many :books, PhoenixGluestickApi.Book
+    timestamps
+  end
+
+  @required_fields ~w(name age)
+  @optional_fields ~w()
+
+  @doc """
+  Creates a changeset based on the `model` and `params`.
+
+  If no params are provided, an invalid changeset is returned
+  with no validation performed.
+  """
+  def changeset(model, params \\ :empty) do
+    model
+    |> cast(params, @required_fields, @optional_fields)
+  end
+end
