@@ -39,7 +39,8 @@ defmodule PhoenixGluestickApi.Mixfile do
      {:cowboy, "~> 1.0"},
      {:slugger, "~> 0.1.0"},
      {:httpoison, "~> 0.8.0"},
-     {:con_cache, "~> 0.10.0"}]
+     {:con_cache, "~> 0.10.0"},
+     {:cors_plug, "~> 0.1.4"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

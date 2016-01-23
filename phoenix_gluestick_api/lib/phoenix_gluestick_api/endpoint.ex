@@ -35,5 +35,6 @@ defmodule PhoenixGluestickApi.Endpoint do
     key: "_phoenix_gluestick_api_key",
     signing_salt: "y9/I7V6e"
 
+  plug CORSPlug
   plug PhoenixGluestickApi.Router
 end
