@@ -1,7 +1,7 @@
 defmodule PhoenixGluestickApi.Book do
   use PhoenixGluestickApi.Web, :model
 
-  alias PhoenixGluestickApi.{ Isbndb }
+  alias PhoenixGluestickApi.{ Isbndb, Repo }
 
   schema "books" do
     field :title, :string
@@ -26,7 +26,7 @@ defmodule PhoenixGluestickApi.Book do
     |> cast(params, @required_fields, @optional_fields)
   end
 
-  def cover_image_tag(book) do
+  def cover_image_url(book) do
     #May be an incomplete case for creating perfect slugs, but it works with the seeded books
     slugged_title = String.replace(book.title, "'", "") |> Slugger.slugify_downcase(?_)
 
@@ -35,5 +35,13 @@ defmodule PhoenixGluestickApi.Book do
       %{"isbn10" => isbn} = Isbndb.get!(slugged_title).body
       "http://covers.openlibrary.org/b/isbn/#{isbn}.jpg"
     end)
+  end
+
+  def get_book(%{id: id}) do
+   Repo.get!(__MODULE__, id)
+  end
+
+  def get_books do
+    Repo.all(__MODULE__)
   end
 end

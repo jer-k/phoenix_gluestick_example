@@ -1,6 +1,8 @@
 defmodule PhoenixGluestickApi.Author do
   use PhoenixGluestickApi.Web, :model
 
+  alias PhoenixGluestickApi.{ Repo }
+
   schema "authors" do
     field :name, :string
     field :age, :integer
@@ -21,5 +23,13 @@ defmodule PhoenixGluestickApi.Author do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def get_author(%{id: id}) do
+    Repo.get!(__MODULE__, id)
+  end
+
+  def get_authors do
+    Repo.all(__MODULE__)
   end
 end

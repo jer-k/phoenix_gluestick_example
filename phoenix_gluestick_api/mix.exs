@@ -19,7 +19,7 @@ defmodule PhoenixGluestickApi.Mixfile do
   def application do
     [mod: {PhoenixGluestickApi, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :con_cache]]
+                    :phoenix_ecto, :postgrex, :con_cache, :plug_graphql]]
   end
 
   # Specifies which paths to compile per environment.
@@ -40,7 +40,8 @@ defmodule PhoenixGluestickApi.Mixfile do
      {:slugger, "~> 0.1.0"},
      {:httpoison, "~> 0.8.0"},
      {:con_cache, "~> 0.10.0"},
-     {:cors_plug, "~> 0.1.4"}]
+     {:cors_plug, "~> 0.1.4"},
+     {:plug_graphql, "~> 0.1.2"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

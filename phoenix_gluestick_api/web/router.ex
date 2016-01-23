@@ -23,8 +23,10 @@ defmodule PhoenixGluestickApi.Router do
     resources "books", BookController, only: [:index, :show]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", PhoenixGluestickApi do
-  #   pipe_through :api
-  # end
+  scope "/graphql" do
+    pipe_through :api
+
+    get  "/", GraphQL.Plug.Endpoint, schema: {PhoenixGluestickApi.GraphQL.Schema, :schema}
+    post "/", GraphQL.Plug.Endpoint, schema: {PhoenixGluestickApi.GraphQL.Schema, :schema}
+  end
 end
