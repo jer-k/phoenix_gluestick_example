@@ -11,7 +11,7 @@ defmodule PhoenixGluestickApi.GraphQL.Author do
         age: %{type: %GraphQL.Type.Int{}},
         books: %{
           type: %GraphQL.Type.List{ofType: PhoenixGluestickApi.GraphQL.Book.type},
-          resolve: fn(_, args, _) -> PhoenixGluestickApi.Book.get_book(args) end
+          resolve: fn(author, _, _) -> PhoenixGluestickApi.Book.get_books(%{author_id: author.id}) end
         }
       } end
     }
@@ -23,7 +23,7 @@ defmodule PhoenixGluestickApi.GraphQL.Author do
       args: %{
         id: %{type: %GraphQL.Type.NonNull{ofType: %GraphQL.Type.String{}}}
       },
-      resolve: fn(_, args, _) -> Author.get_author(args) |> serialize end
+      resolve: fn(_, args, _) -> Author.get_author(args) end
     }
   end
 
@@ -31,11 +31,7 @@ defmodule PhoenixGluestickApi.GraphQL.Author do
     %{
       type: %GraphQL.Type.List{ofType: type},
       args: %{},
-      resolve: fn(_, _, _) -> Author.get_authors |> Enum.map(&(serialize(&1))) end
+      resolve: fn(_, _, _) -> Author.get_authors end
     }
-  end
-
-  def serialize(author) do
-    Map.take(author, [:id, :name, :age])
   end
 end

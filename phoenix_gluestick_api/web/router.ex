@@ -26,7 +26,6 @@ defmodule PhoenixGluestickApi.Router do
   scope "/graphql" do
     pipe_through :api
 
-    get  "/", GraphQL.Plug.Endpoint, schema: {PhoenixGluestickApi.GraphQL.Schema, :schema}
-    post "/", GraphQL.Plug.Endpoint, schema: {PhoenixGluestickApi.GraphQL.Schema, :schema}
+    forward "/", GraphQL.Plug.Endpoint, schema: {PhoenixGluestickApi.GraphQL.Schema, :schema}
   end
 end

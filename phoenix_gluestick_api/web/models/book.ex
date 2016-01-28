@@ -44,4 +44,8 @@ defmodule PhoenixGluestickApi.Book do
   def get_books do
     Repo.all(__MODULE__)
   end
+
+  def get_books(%{author_id: author_id}) do
+    Repo.all(from b in __MODULE__, where: b.author_id == ^author_id)
+  end
 end
