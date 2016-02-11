@@ -40,7 +40,7 @@ defmodule PhoenixGluestickApi.Mixfile do
      {:slugger, "~> 0.1.0"},
      {:httpoison, "~> 0.8.0"},
      {:con_cache, "~> 0.10.0"},
-     {:cors_plug, "~> 0.1.4"},
+     {:cors_plug, "~> 1.1.0"},
      {:plug_graphql, "~> 0.1.2"}]
   end
 
