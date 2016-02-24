@@ -35,6 +35,6 @@ defmodule PhoenixGluestickApi.Endpoint do
     key: "_phoenix_gluestick_api_key",
     signing_salt: "y9/I7V6e"
 
-  plug CORSPlug, origin: ["http://localhost:8880", "http://localhost:8888"]
+  plug CORSPlug, origin: ["http://localhost:8888"]
   plug PhoenixGluestickApi.Router
 end
