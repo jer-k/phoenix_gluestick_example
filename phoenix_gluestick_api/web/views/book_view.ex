@@ -17,6 +17,6 @@ defmodule PhoenixGluestickApi.BookView do
       pages: book.pages,
       published: book.published,
       author_id: book.author_id,
-      cover_image_tag: Book.cover_image_tag(book)}
+      cover_image_url: Book.cover_image_url(book)}
   end
 end
